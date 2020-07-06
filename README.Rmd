@@ -1,0 +1,68 @@
+---
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# spikes
+
+<!-- badges: start -->
+<!-- badges: end -->
+working on some code for identifying symptom spikes with Asha
+
+
+## Installation
+
+``` r
+# install.packages("devtools")
+devtools::install_github("milanwiedemann/spike")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(spike)
+```
+
+
+```{r}
+# create list with variables
+phq_variables <- c("phq_1", "phq_2", "phq_3", "phq_4", 
+                   "phq_5", "phq_6", "phq_7", "phq_8", 
+                   "phq_9", "phq_10", "phq_11", "phq_12", 
+                   "phq_13", "phq_14", "phq_15")
+
+# identify spikes
+identidy_spikes(data = df_spikes,
+                id_var = id, 
+                # list of repeated measures
+                repeated_measures = phq_variables, 
+                spike_cutoff = 10, 
+                # Minimum number of sessions between multiple spikes experiences by the same participant
+                min_between_spike_interval = 9, 
+                # Maximum number of repeated measures between symptom deterioration and improvement 
+                # that would still be considered a spike
+                max_spike_interval = 10
+                )
+
+```
+
+
+# TODOs
+
+- add references
+- check whats important with asha
+- decide which direction to go to with this
