@@ -68,7 +68,7 @@ rename_spike_vars(df_spikes_bad, phq_variables_bad)
 ```{r}
 
 # identify spikes
-identidy_spikes(data = df_spikes,
+df_spikes_identify <- identidy_spikes(data = df_spikes,
                 id_var = id, 
                 # list of repeated measures
                 repeated_measures = phq_variables, 
@@ -78,10 +78,12 @@ identidy_spikes(data = df_spikes,
                 min_between_spike_interval = 9, 
                 # Maximum number of repeated measures between symptom deterioration and improvement 
                 # that would still be considered a spike
-                max_spike_duration = 10
+                max_spike_duration = 3
                 ) %>% 
   print(n = 100)
 
+
+df_spikes_identify
 ```
 
 
@@ -100,7 +102,7 @@ identidy_spikes(data = df_spikes_bad,
                 min_between_spike_interval = 9, 
                 # Maximum number of repeated measures between symptom deterioration and improvement 
                 # that would still be considered a spike
-                max_spike_duration = 10
+                max_spike_duration = 3
                 ) %>% 
   print(n = 100)
 
@@ -108,5 +110,7 @@ identidy_spikes(data = df_spikes_bad,
 
 # TODOs
 
-- add references
+- add references, depression spikes, anxiety spikes
+- make decision about terminology of argument and variable names
+- think about adding treatment phases, this would mean checking that `time_spike` and `time_improvement` fall in the same specified treatment phase
 - decide which direction to go to with this

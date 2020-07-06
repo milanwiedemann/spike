@@ -83,9 +83,9 @@ identidy_spikes <- function(data, id_var, repeated_measures, cutoff_deterioratio
     dplyr::select(!!id_var, id_spike, dplyr::everything()) %>%
     dplyr::group_by(!!id_var) %>%
     dplyr::mutate(diff_time_spike = time_spike - dplyr::lag(time_spike),
-           interval_spike = time_improvement - time_spike) %>%
+           spike_duration = time_improvement - time_spike) %>%
     dplyr::filter(diff_time_spike >= min_between_spike_interval | is.na(diff_time_spike) == TRUE) %>%
-    dplyr::filter(interval_spike <= max_spike_duration) %>%
+    dplyr::filter(spike_duration <= max_spike_duration) %>%
     dplyr::ungroup()
 
 
