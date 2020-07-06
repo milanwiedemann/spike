@@ -5,8 +5,11 @@
 #' @param repeated_measures List of repeated measures
 #' @param spike_cutoff Minimum number of symptom decrease that would be considered as a spike.
 #' @param tx_phases NOT SUPPORTED AT THE MOMENT. List specifying treatment phases.
-#' @param min_between_spike_interval Minimum number of sessions between multiple spikes experiences by the same participant
+#'
+#' @param min_improvement_post_spike NOT SUPPORTED AT THE MOMENT. Minimum symptom improvement after symptom decrease to be considered a spike.
 #' @param max_spike_interval Maximum number of repeated measures between symptom deterioration and improvement that would still be considered a spike.
+#'
+#' @param min_between_spike_interval Minimum number of sessions between multiple spikes experiences by the same participant
 #'
 #' @return
 #' @export
