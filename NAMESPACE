@@ -2,4 +2,5 @@
 
 export("%>%")
 export(identidy_spikes)
+export(rename_spike_vars)
 importFrom(magrittr,"%>%")

@@ -8,10 +8,11 @@ identidy_spikes(
   data,
   id_var,
   repeated_measures,
-  spike_cutoff,
-  tx_phases,
+  cutoff_deterioration,
+  cutoff_improvement,
+  max_spike_duration,
   min_between_spike_interval,
-  max_spike_interval
+  tx_phases
 )
 }
 \arguments{
@@ -21,13 +22,15 @@ identidy_spikes(
 
 \item{repeated_measures}{List of repeated measures}
 
-\item{spike_cutoff}{Minimum number of symptom decrease that would be considered as a spike.}
+\item{cutoff_deterioration}{Minimum number of symptom decrease that would be considered as a spike.}
 
-\item{tx_phases}{NOT SUPPORTED AT THE MOMENT. List specifying treatment phases.}
+\item{cutoff_improvement}{Minimum symptom improvement after symptom decrease to be considered a spike.}
+
+\item{max_spike_duration}{Maximum number of repeated measures between symptom deterioration and improvement that would still be considered a spike.}
 
 \item{min_between_spike_interval}{Minimum number of sessions between multiple spikes experiences by the same participant}
 
-\item{max_spike_interval}{Maximum number of repeated measures between symptom deterioration and improvement that would still be considered a spike.}
+\item{tx_phases}{NOT SUPPORTED AT THE MOMENT. List specifying treatment phases.}
 }
 \value{
 

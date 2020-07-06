@@ -11,3 +11,15 @@ df_spikes <- read_csv("id,phq_1,phq_2,phq_3,phq_4,phq_5,phq_6,phq_7,phq_8,phq_9,
 6,30,29,28,29,33,32,30,31,29,29,28,30,31,30,29,0")
 
 usethis::use_data(df_spikes, overwrite = TRUE)
+
+
+
+df_spikes_bad <- read_csv("id,phqone,ph2q,phq3,phq_four,PQH_5,pHq_6,phq_7,phQ8,phnine,phq_100,phq_1q1,phq12,phq_13,phq_t14,phq_s15,spike
+1,10,11,24,25,14,12,11,10,10,11,10,20,21,10,9,1
+2,20,21,21,20,22,21,20,22,23,24,22,20,22,21,20,0
+3,10,11,10,9,9,9,10,11,12,10,10,11,11,12,10,0
+4,18,19,17,20,19,20,17,30,31,30,22,21,20,22,20,1
+5,5,15,16,17,15,12,11,17,16,10,9,10,10,11,10,1
+6,30,29,28,29,33,32,30,31,29,29,28,30,31,30,29,0")
+
+usethis::use_data(df_spikes_bad, overwrite = TRUE)

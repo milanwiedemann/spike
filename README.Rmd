@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# spikes
+# Identify spikes in repeated measures of symptoms
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -37,32 +37,76 @@ This is a basic example which shows you how to solve a common problem:
 library(spike)
 ```
 
+# Test rename variables function
 
 ```{r}
+
 # create list with variables
 phq_variables <- c("phq_1", "phq_2", "phq_3", "phq_4", 
                    "phq_5", "phq_6", "phq_7", "phq_8", 
                    "phq_9", "phq_10", "phq_11", "phq_12", 
                    "phq_13", "phq_14", "phq_15")
 
+
+rename_spike_vars(df_spikes, phq_variables)
+```
+
+
+```{r}
+# create list with variables
+phq_variables_bad <- c("phqone", "ph2q", "phq3", "phq_four", 
+                       "PQH_5", "pHq_6", "phq_7", "phQ8", 
+                       "phnine", "phq_100", "phq_1q1", 
+                       "phq12", "phq_13", "phq_t14", "phq_s15")
+
+rename_spike_vars(df_spikes_bad, phq_variables_bad)
+```
+
+# Test identify spikes with good variable names
+
+
+```{r}
+
 # identify spikes
 identidy_spikes(data = df_spikes,
                 id_var = id, 
                 # list of repeated measures
                 repeated_measures = phq_variables, 
-                spike_cutoff = 10, 
+                cutoff_deterioration = 10, 
+                cutoff_improvement = 5,
                 # Minimum number of sessions between multiple spikes experiences by the same participant
                 min_between_spike_interval = 9, 
                 # Maximum number of repeated measures between symptom deterioration and improvement 
                 # that would still be considered a spike
-                max_spike_interval = 10
-                )
+                max_spike_duration = 10
+                ) %>% 
+  print(n = 100)
 
 ```
 
 
+# Test identify spikes with bad variable names
+
+```{r}
+
+# identify spikes
+identidy_spikes(data = df_spikes_bad,
+                id_var = id, 
+                # list of repeated measures
+                repeated_measures = phq_variables_bad, 
+                cutoff_deterioration = 10, 
+                cutoff_improvement = 5,
+                # Minimum number of sessions between multiple spikes experiences by the same participant
+                min_between_spike_interval = 9, 
+                # Maximum number of repeated measures between symptom deterioration and improvement 
+                # that would still be considered a spike
+                max_spike_duration = 10
+                ) %>% 
+  print(n = 100)
+
+```
+
 # TODOs
 
 - add references
-- check whats important with asha
 - decide which direction to go to with this
