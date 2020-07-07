@@ -42,6 +42,7 @@ library(tidyverse)
 # Identify spikes
 
 - See the help file for more information `help(identidy_spikes)`
+- We still need to come up with good argument names for the function and good names for the new variables
 
 ```{r}
 # Define a list of repeated measures to be checked for depression spikes
