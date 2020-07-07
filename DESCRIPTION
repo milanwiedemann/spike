@@ -1,15 +1,23 @@
-Package: spike
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
+Package: symptomspikes
+Title: Identify Symptom Spikes in Longitudinal Data
+Version: 0.0.0.9001
+Date: 2020-07-07
+Authors@R: c(
+    person(given = "Asha",
+           family = "Ladwa",
+           role = c("aut"),
+           email = "ash_ladwa@hotmail.co.uk",
+           comment = c(ORCID = "0000-0002-4195-6135")),
+    person(given = "Milan",
+           family = "Wiedemann",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "milan.wiedemann@gmail.com",
+           comment = c(ORCID = "0000-0003-1991-282X")),
+    person("Economic and Social Research Council (ESRC)", role = c("fnd")),
+    person("Mental Health Research UK (MHRUK)", role = c("fnd"))
+           )
 Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

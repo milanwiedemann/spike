@@ -19,14 +19,15 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 <!-- badges: end -->
-working on some code for identifying symptom spikes with Asha
 
+Working together with Asha Ladwa on code for identifying (depression) symptom spikes.
+This is currently work in progress and will eventually be moved to Asha's [GitHub](https://github.com/AshaLadwa) account.
 
 ## Installation
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("milanwiedemann/spike")
+devtools::install_github("milanwiedemann/symptomspikes")
 ```
 
 ## Example
@@ -34,83 +35,31 @@ devtools::install_github("milanwiedemann/spike")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-library(spike)
+library(symptomspikes)
+library(tidyverse)
 ```
 
-# Test rename variables function
+# Identify spikes
+
+- See the help file for more information `help(identidy_spikes)`
 
 ```{r}
-
-# create list with variables
+# Define a list of repeated measures to be checked for depression spikes
 phq_variables <- c("phq_1", "phq_2", "phq_3", "phq_4", 
                    "phq_5", "phq_6", "phq_7", "phq_8", 
                    "phq_9", "phq_10", "phq_11", "phq_12", 
                    "phq_13", "phq_14", "phq_15")
 
-
-rename_spike_vars(df_spikes, phq_variables)
-```
-
-
-```{r}
-# create list with variables
-phq_variables_bad <- c("phqone", "ph2q", "phq3", "phq_four", 
-                       "PQH_5", "pHq_6", "phq_7", "phQ8", 
-                       "phnine", "phq_100", "phq_1q1", 
-                       "phq12", "phq_13", "phq_t14", "phq_s15")
-
-rename_spike_vars(df_spikes_bad, phq_variables_bad)
-```
-
-# Test identify spikes with good variable names
-
-
-```{r}
-
-# identify spikes
+# Identify spikes and save to a new object
 df_spikes_identify <- identidy_spikes(data = df_spikes,
-                id_var = id, 
-                # list of repeated measures
-                repeated_measures = phq_variables, 
-                cutoff_deterioration = 10, 
-                cutoff_improvement = 5,
-                # Minimum number of sessions between multiple spikes experiences by the same participant
-                min_between_spike_interval = 9, 
-                # Maximum number of repeated measures between symptom deterioration and improvement 
-                # that would still be considered a spike
-                max_spike_duration = 3
-                ) %>% 
-  print(n = 100)
+                                      id_var = id, 
+                                      repeated_measures = phq_variables, 
+                                      cutoff_deterioration = 10, 
+                                      cutoff_improvement = 5,
+                                      min_between_spike_interval = 9, 
+                                      max_spike_duration = 3)
 
-
-df_spikes_identify
-```
-
-
-# Test identify spikes with bad variable names
-
-```{r}
-
-# identify spikes
-identidy_spikes(data = df_spikes_bad,
-                id_var = id, 
-                # list of repeated measures
-                repeated_measures = phq_variables_bad, 
-                cutoff_deterioration = 10, 
-                cutoff_improvement = 5,
-                # Minimum number of sessions between multiple spikes experiences by the same participant
-                min_between_spike_interval = 9, 
-                # Maximum number of repeated measures between symptom deterioration and improvement 
-                # that would still be considered a spike
-                max_spike_duration = 3
-                ) %>% 
-  print(n = 100)
+# Print data frame with information about spikes
+print(df_spikes_identify)
 
 ```
-
-# TODOs
-
-- add references, depression spikes, anxiety spikes
-- make decision about terminology of argument and variable names
-- think about adding treatment phases, this would mean checking that `time_spike` and `time_improvement` fall in the same specified treatment phase
-- decide which direction to go to with this
